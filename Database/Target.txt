@@ -1,0 +1,12 @@
+Restfull API
+SQL
+Javascript
+
+ClientSide
+Server-Side
+Database
+OS
+Powershell
+Networking
+DSA
+System Design
