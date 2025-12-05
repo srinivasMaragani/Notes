@@ -1,6 +1,6 @@
-| Level | Model | What it Describes | Who Uses It |
+| Level--------- | Model------------ | What it Describes------------- | Who Uses It |
 | --- | --- | --- | --- |
-| 1. **Conceptual** | ER Model | Real-world entities and relationships | Designers, Analysts |
+| 1.**Conceptual** | ER Model | Real-world entities and relationships | Designers, Analysts |
 | 2. **Logical** | Relational Model | Tables, attributes, keys (abstract view) | Designers, Developers |
 | 3. **Physical** | Database Tables (SQL) | Actual SQL schema and storage details | DBAs, Developers |
 
