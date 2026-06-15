@@ -1,0 +1,74 @@
+HISTORY OF DATABSE
+
+Navigational database
+
+The advent of computers in the early 1960s marked the beginning of computerised databases.
+Charles Bachman designed the first database known as the Integrated Data Store, followed by the Information Management System developed by IBM. 
+These databases were navigational, requiring users to navigate through the entire database to find the information they wanted. 
+The two main models of this navigational database were the hierarchical model developed by IBM and the network model introduced at the Conference on Data Systems Languages (CODASYL).
+
+Hierarchical Model (by IBM)
+
+1) In this model root segment is mother of all parent segments.
+
+Parent Segment - It has one or more child segments, it can also be child segment
+
+Leaves - These are segments which doesn't have child segments(node)
+
+2) There are 2 kinds of associations 
+    Logical associations - One child segment has one parent segment, Parent can have multiple child segments
+    Illogical associations - child nodes are associated with more than one parent (Having many-to-many relationships, circular dependencies)
+
+Segment - A structured unit of data storage that represent record or group of fields which typically corresponds to entity or object in system
+
+Parent
+├── Child 1
+│   ├── Sub-child 1.1
+│   ├── Sub-child 1.2
+│   └── Sub-child 1.3
+├── Child 2
+│   ├── Sub-child 2.1
+│   ├── Sub-child 2.2
+│   └── Sub-child 2.3
+└── Child 3
+    ├── Sub-child 3.1
+    └── Sub-child 3.2
+
+Network Model (Charles Bachman)( It was formalized by CODASYL based on ideas from IDS.)
+
+This model is generalization of hierarchical model - which will solve many-to-many relationships cant be done by hierarchical model
+
+It uses graph structure consisting of nodes(entities) and edges (relationships) to organize data
+
+It can allows a record to have MORE THAN ONE PARENT SEGMENT, here relationship is called SET
+
+SET - A owner records that is same as of parent hierarchical model and member record that is same as of child in the hierarchical model
+
+Node A
+├── Node B
+│   ├── Node D
+│   └── Node E
+├── Node C
+│   ├── Node F
+│   └── Node G
+└── Node H
+    ├── Node E
+    └── Node F
+
+
+Relational Database 
+
+
+
+Edgar Codd worked for IBM in the development of hard disk systems, and he was not happy with the lack of a search engine in the CODASYL approach, and the IMS model.
+He wrote a series of papers, in 1970, outlining novel ways to construct databases. His ideas eventually evolved into a paper titled A Relational Model of Data for Large Shared Data Banks,
+ which described a new method for storing data and processing large databases. Records would not be stored in a free-form list of linked records,
+ as in CODASYL navigational model, but instead used a “table with fixed-length records.”
+
+IBM had invested heavily in the IMS model and wasn’t terribly interested in Codd’s ideas. 
+Fortunately, some people who didn’t work for IBM were interested. In 1973, Michael Stonebraker and Eugene Wong (both then at UC Berkeley) made the decision to research relational database systems.
+The project was called INGRES (Interactive Graphics and Retrieval System) and successfully demonstrated a relational model could be efficient and practical.
+INGRES worked with a query language known as QUEL, in turn, pressuring IBM to develop SQL in 1974, which was more advanced (SQL became ANSI and OSI standards in 1986 and 1987).
+SQL quickly replaced QUEL as the more functional query language.
+
+Oracle(Larry Ellison,Ed Oates,Bob Miner) brought the first commercial relational database to market in 1979 followed by DB2, SAP Sysbase ASE, and Informix.

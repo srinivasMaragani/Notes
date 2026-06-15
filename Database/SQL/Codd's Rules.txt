@@ -1,0 +1,227 @@
+Codd's RDBMS rules
+
+Rule Zero
+
+statement : For any system that is advertised as, or claimed to be, a relational data base managment system, that system must be able to manage data bases entirely through its relational capabilities.
+
+Understanding : If a system doesn't comply with rule zero shall not be rated as a relational DBMS. Any system that is claims to be a relational DBMS must support data base insert, update and delete at the relational level. That system should support Information rule and Guaranteed access rule.
+
+Database Management: All database operations, including data manipulation, data definition, and control, should be performed through relational means (like SQL or a comparable language).
+
+No Bypassing Relational Integrity: There should be no way to circumvent the relational rules or integrity constraints established by the system's relational language when interacting with the database.
+
+
+1 The Information Rule 
+
+statement : All the information in a relational database is represented explicitly at the logical level and in exactly one way - by values in tables.
+
+Understanding : Key Points:
+Tabular Representation:
+All data within the database should be organized into tables. Each table consists of rows (also known as records or tuples) and columns (also known as fields or attributes). This structure is known as a relation in relational database terminology.
+
+Single, Unambiguous Representation:
+There should be one and only one way to represent any piece of information. This ensures data consistency and clarity. For instance, if you have an address, it should be stored in a consistent format across all records, not in multiple formats like in one column or spread across several columns in different ways.
+
+Atomic Values:
+Each cell in the table should contain atomic values, meaning they cannot be further subdivided. For example, an address should not be stored in a single field as a string like "123 Main St, Anytown, USA" but rather split into separate columns for street, city, and country if needed for data integrity and normalization.
+
+No Non-Tabular Data Structures:
+This rule excludes the use of other data structures like arrays, lists, or hierarchical structures within the database for storing information. All data must fit into the relational model of tables.
+
+Implications for Database Design:
+This rule influences how databases are designed, pushing for normalization where data is broken down into its most basic components. It also affects how queries are written, ensuring they work with this tabular data structure.
+
+Metadata Included:
+Even the database's metadata (data about the data, like table schemas, constraints, etc.) should be stored in tables, adhering to this rule.
+
+
+2 Guaranteed access rule
+
+Statement : Each and every datum (atomic value) in a relational data base is guaranteed to be logically accessible by resorting to a combination of table name, primary key value and column name.
+
+Understanding : This rule states that each and every value in a relational data base can be fetch by multiple other methods but, there should be at least one method which should be direct and unambiguous i.e. by using table name, primary key value and column name.
+
+
+3 Systematic treatment of null values
+
+Statement : Null values (distinct from the empty character string or a string of blank characters and distinct from zero or any other number) are supported in fully relational DBMS for representing missing information and inapplicable information in a systematic way, independent of data type.
+
+Understanding : Representation of Missing Information:
+Null values must be used to represent missing information (i.e., information that exists but is not currently known) or inapplicable information (i.e., information that does not apply to a particular record).
+
+Example: A table of employee data may have a column for "Date of Retirement." For an employee who is still working, this value is inapplicable.
+A table of student grades may have a column for "Final Exam Score." If the exam has not yet been taken, this value is missing.
+
+Independence from Data Type:
+Null values must be supported across all data types (e.g., integers, floating-point numbers, strings, dates, etc.).
+The implementation of nulls should be uniform regardless of the type of data the column stores.
+
+
+4 Dynamic on-line catalog based on the relational model
+
+Statement : The data base description is represented at the logical level in the same way as ordinary data, so that authorized users can apply the same relational language to its interrogation as they apply to the regular data.
+
+Understanding : The database must maintain a catalog that describes the structure of the database, such as:
+
+Tables, columns, and their data types.
+Constraints (e.g., primary keys, foreign keys).
+Views, indexes, and stored procedures.
+This catalog must be dynamic and always kept up to date as the database schema or structure changes.
+
+Representation at the Logical Level:
+The catalog must be stored in the database itself as relational tables.
+These tables store metadata in a way that is consistent with the relational model.
+For example, the catalog might contain a table called TABLES that lists all tables in the database, or COLUMNS that describes each column.
+
+Accessible Using the Relational Language:
+Authorized users must be able to query the catalog using the same relational query language (e.g., SQL) they use to query ordinary data.
+This ensures consistency and simplicity, as users don't need a separate mechanism to access metadata.
+
+User Authorization:
+Access to the catalog must be controlled based on user privileges.
+Only authorized users should be allowed to view or modify certain aspects of the catalog.
+
+
+5 Comprehensive data sublanguage rule.
+
+Statement : A relational system may support several languages and various modes of terminal use. However, there must be at least one language whose statements are expressible, per some well-defined syntax, as character strings and that is comprehensive in supporting all of the following items: 
+* Data definition
+* View definition
+* Data manipulation(interactive and by program)
+* Integrity constraints
+* Authorization
+* Transaction boundaries
+
+Understanding : Single Comprehensive Language:
+
+A relational system must support at least one language that is:
+Well-defined with a clear syntax (e.g., SQL).
+Expressed in character strings, meaning it can be used interactively or embedded in programs.
+This language should support all essential database operations.
+
+
+
+
+
+
+
+
+
+Rule No.6 : Viw Updating Rule
+
+All views that are theoretically updatable must also be updatable by the system.
+
+EXPLAINATION
+
+It states that a  relational database management system must support the ability to update the data stored in the database through views,
+which are virtual tables that present a specific subset of the data in the database in a  specific format. 
+This means that any changes made to the data in a view  should be automatically reflected in the underlying base tables, 
+and conversely, any changes made to the base tables should be reflected in any views that include that data. 
+This allows users to update the data in the database through a simplified, high-level interface, rather than having to access and manipulate the underlying base tables directly.
+
+A view is considered theoretically updatable if:
+
+Direct Mapping: Each row in the view corresponds directly to a row in the base table.
+No Derived Columns: The view does not include calculated or derived columns.
+No Aggregations: The view does not use SUM, AVG, COUNT, GROUP BY, or similar operations.
+No Joins or Subqueries: The view is based on a single base table.
+No Distinct/Set Operations: The view does not use DISTINCT, UNION, or INTERSECT.
+
+
+
+
+Rule No.7 : High-level insert, update and delete.
+
+The capability of handling a base relation or a derived relation as a single operand applies not only to the retrieval of data but also to the insertion, update and deletion of data.
+
+EXPLAINATION
+
+It states that a relational database management system must support the ability to perform insert, update, and delete operations on the data stored in the database using a high-level, non-procedural language,
+rather than requiring the user to specify the exact steps that need to be taken to perform the operation.
+This means that the user should be able to specify the desired outcome of the operation, rather than having to specify how to accomplish it.
+This allows for more efficient and less error-prone manipulation of data.
+
+(in initial versions of SQLite, we can not make operations like create, update, delete without triggers)
+
+Rule no.8 : Physical data independence
+
+ Application programs and terminal activities remain logically unimpared whenever any changes are made in either storage representations or access methods.
+
+EXPLAINATION
+
+It states that a relational database management system must be physically independent of the hardware and software used to store and access the data. 
+This means that the organization and access methods of the data should be separate from the physical storage of the data. 
+This allows for changes in the physical storage of the data, such as changes in hardware or file organization, to be made without affecting the logical structure of the data or the way in which it is accessed.
+This makes it easier to change the way data is stored and accessed, without having to change the way the data is used or the applications that rely on it.
+
+
+Rule no.9 : Logical data independence.
+
+  Application programs and terminal activites remain logically unimpared when information-preserving changes of any kind that theoretically permit unimpairment are made to the base tables.
+
+EXPLAINATION
+
+It states that a relational database management system must be logically independent of the structure of the data. 
+This means that the logical structure of the data, such as the schema, should be separate from the way in which the data is accessed. 
+
+it applies on
+     (1) Adding a New Column
+     (2) Splitting or Merging Tables
+     (3) Introducing Views
+       (Only referring to any kind that theoretically permit unimpairment)
+
+
+Rule no.10 : Integrity independence.
+
+ Integrity constraints specific to a particular relational data base must be definable in the relational data sublanguage and storable in the catalog, not in the application programs.
+
+
+EXPLAINATION
+
+Entity integrity :  No component of a primary key is allowed to have a null value.
+Referential integrity :  For each distinct nonnull foreign key value in a relational data base, there must exist a matching primary key value from the same domain.
+
+In addition to the two integrity rules (entity integrity and referential integrity) that apply to every relational data base,
+there is a clear need to be able to specify additional integrity constraints reflecting either business policies or government regulations.
+
+Assume the relational model is faithfully reflected. Then, the additional integrity constraints are defined in terms of the high-level data sublanguage and the definitions stored in the catalog, not in the application programs.
+
+If, as sometimes happens, either business policies or government regulations change, it will probably become necessary to change the integrity constraints.
+Normally, this can be accomplished in a fully relational DBMS by changing one or more of the integrity statements that are stored in the catalog.
+
+
+
+Rule no.11 : Distribution Independence
+
+The distribution of data across multiple locations should be invisible to users, and the database system should handle the distribution transparently.
+
+EXPLAINATION
+
+this rule states that the database management system should be able to handle the distribution of data across multiple physical locations,
+without affecting the way the data is accessed and integrity of the data. This allows for the scalability and availability of the data to be improved.
+
+Whether the data resides in one central location or is split across multiple servers in different locations, users should not need to adjust their queries or application logic.
+
+The DBMS handles the complexities of accessing, joining, and updating distributed data behind the scenes.
+
+Rule no.12 Non-Subversion Rule
+
+ If the interface of the system is providing access to low-level records, then the interface must not be able to damage the system and bypass security and integrity constraints.
+
+EXPLAINATION
+
+This rule ensures that any low-level operations (e.g., direct access to data using system commands or procedural languages) must respect the same rules, constraints, 
+and protections as those enforced by the relational database system's high-level language (like SQL).
+
+In other words:
+
+The database should enforce integrity rules (e.g., primary keys, foreign keys, constraints) regardless of how the data is accessed or manipulated.
+Developers cannot bypass these rules by using lower-level tools or programming interfaces.
+
+
+
+
+
+
+
+
