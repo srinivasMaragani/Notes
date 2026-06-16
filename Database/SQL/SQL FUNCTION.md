@@ -1,4 +1,4 @@
-## 2. String Functions
+## 1. String Functions
 
 String functions evaluate an input string value and return a string or numeric value.
 
@@ -80,7 +80,7 @@ SELECT REPLICATE(FirstName, 5) AS Multiplexed FROM Employees_FUNCTION;
 SELECT QUOTENAME(FirstName) AS QuotedName FROM Employees_FUNCTION; -- Generates [John], [Jane], etc.
 ```
 
-## 3. Numeric & Mathematical Functions
+## 2. Numeric & Mathematical Functions
 
 Used for calculations, processing floating-point errors, geometric mappings, and deterministic rounding boundaries.
 
@@ -128,7 +128,7 @@ SELECT
 FROM Employees_FUNCTION;
 ```
 
-## 4. Date & Time Functions
+## 3. Date & Time Functions
 
 Crucial for analytical queries, timestamp isolation, temporal comparisons, and generation of calendar attributes.
 
@@ -183,7 +183,7 @@ SELECT
 FROM Sales_FUNCTION;
 ```
 
-## 5. Aggregate Functions
+## 4. Aggregate Functions
 
 Aggregates process a vertical slice of values within a table column, computing a scalar summary value. They are used in conjunction with a `GROUP BY` clause.
 
@@ -228,7 +228,7 @@ WHERE DepartmentID IS NOT NULL
 GROUP BY DepartmentID;
 ```
 
-## 6. Logical, Conditional & Null-Handling Functions
+## 5. Logical, Conditional & Null-Handling Functions
 
 These functions allow developers to handle missing data (`NULL`) or embed processing rules directly within data pipelines.
 
@@ -274,7 +274,7 @@ SELECT
 FROM Sales_FUNCTION;
 ```
 
-## 7. Data Conversion & Type Validation Functions
+## 6. Data Conversion & Type Validation Functions
 
 These functions handle casting between conflicting structural types (e.g., changing string text arrays into operational calendar variables).
 
@@ -311,7 +311,7 @@ SELECT
     ISNUMERIC('EmployeeCode_XYZ') AS IsNumericCheckFalse;
 ```
 
-## 8. Advanced Window Functions (Analytical Engines)
+## 7. Advanced Window Functions (Analytical Engines)
 
 Window functions perform calculations across a set of table rows that are related to the current row, without collapsing the individual source records. They require the `OVER()` clause.
 
