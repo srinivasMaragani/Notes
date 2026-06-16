@@ -356,4 +356,68 @@ FROM Sales_FUNCTION;
 ```
 
 """
+# Pracite Steps :
+CREATE TABLE Employees_FUNCTION
+(
+    EmployeeID INT IDENTITY(1,1) PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    DepartmentID INT,
+    Salary DECIMAL(10,2),
+    Commission DECIMAL(10,2) NULL,
+    HireDate DATE
+);
+
+INSERT INTO Employees_FUNCTION
+(
+    FirstName,
+    LastName,
+    DepartmentID,
+    Salary,
+    Commission,
+    HireDate
+)
+VALUES
+('John','Smith',1,50000,5000,'2020-01-15'),
+('Jane','Williams',1,70000,NULL,'2018-05-20'),
+('Robert','Brown',2,60000,3000,'2019-08-10'),
+('Emily','Davis',2,75000,NULL,'2017-11-01'),
+('Michael','Wilson',3,55000,2500,'2021-03-18'),
+('Sarah','Taylor',3,65000,NULL,'2016-07-25'),
+('David','Anderson',1,80000,8000,'2015-12-12'),
+('Lisa','Thomas',2,62000,NULL,'2022-02-14'),
+('James','Jackson',3,58000,1500,'2020-09-05'),
+('Linda','White',2,90000,10000,'2014-04-08');
+
+CREATE TABLE Sales_FUNCTION
+(
+    SaleID INT IDENTITY(1,1) PRIMARY KEY,
+    EmployeeID INT,
+    SaleAmount DECIMAL(10,2),
+    SaleDate DATE
+);
+
+INSERT INTO Sales_FUNCTION
+(
+    EmployeeID,
+    SaleAmount,
+    SaleDate
+)
+VALUES
+(1,2500,'2025-01-10'),
+(1,3000,'2025-02-15'),
+(1,4500,'2025-03-12'),
+
+(2,5000,'2025-01-20'),
+(2,5200,'2025-02-18'),
+
+(3,1500,'2025-01-08'),
+(3,1800,'2025-02-08'),
+
+(4,7000,'2025-01-25'),
+(4,6500,'2025-02-25'),
+
+(5,3500,'2025-01-11'),
+(5,4000,'2025-02-11');
+
 
